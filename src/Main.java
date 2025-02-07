@@ -1,9 +1,10 @@
 import model.Board;
 import model.Space;
 
-import javax.swing.*;
-import javax.swing.text.html.Option;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -21,9 +22,9 @@ public class Main {
     public static void main(String[] args) {
         final var positions = Stream.of(args)
                 .collect(Collectors.toMap(
-                k -> k.split(";")[0],
-                v -> v.split(";")[1]
-        ));
+                        k -> k.split(";")[0],
+                        v -> v.split(";")[1]
+                ));
 
         var option = -1;
         while (true) {
@@ -65,7 +66,7 @@ public class Main {
         for (int i = 0; i < BOARD_LIMIT; i++) {
             spaces.add(new ArrayList<>());
             for (int j = 0; j < BOARD_LIMIT; j++) {
-                var positionConfig  = positions.get("%s,%s".formatted(i, j));
+                var positionConfig = positions.get("%s,%s".formatted(i, j));
                 var expected = Integer.parseInt(positionConfig.split(",")[0]);
                 var fixed = Boolean.parseBoolean(positionConfig.split(",")[1]);
                 var currentSpace = new Space(expected, fixed);
@@ -122,11 +123,11 @@ public class Main {
             return;
         }
 
-        var args=  new Object[81];
+        var args = new Object[81];
         var argPos = 0;
 
         for (int i = 0; i < BOARD_LIMIT; i++) {
-            for(var col : board.getSpaces()) {
+            for (var col : board.getSpaces()) {
                 args[argPos++] = " " + ((isNull(col.get(i).getActual())) ? " " : col.get(i).getActual());
             }
         }
