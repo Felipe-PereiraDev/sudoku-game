@@ -9,7 +9,7 @@ import static java.util.Objects.isNull;
 
 public class NumberTextLimit extends PlainDocument {
 
-    private final List<String> NUMBERS = List.of("1", "2", "3", "4", "6", "7", "8", "9");
+    private final List<String> NUMBERS = List.of("1", "2", "3", "4", "5" , "6", "7", "8", "9");
 
     @Override
     public void insertString(int offs, String str, AttributeSet a) throws BadLocationException {
